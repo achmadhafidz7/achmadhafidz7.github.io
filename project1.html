@@ -1,0 +1,425 @@
+<!DOCTYPE HTML>
+<!--
+	Dopetrope by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Achmad Hafidz</title>
+		<link rel="icon" type="image/png" href="images/titlelogo.png"/>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://kit.fontawesome.com/57e73c674f.js" crossorigin="anonymous"></script>
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<section id="header">
+
+					<!-- Logo -->
+						<h1><a href="index.html">ACHMAD HAFIDZ</a></h1>
+
+					<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<!-- <li>
+								<a href="#">Dropdown</a>
+								<ul>
+									<li><a href="#">Lorem ipsum dolor</a></li>
+									<li><a href="#">Magna phasellus</a></li>
+									<li><a href="#">Etiam dolore nisl</a></li>
+									<li>
+										<a href="#">Phasellus consequat</a>
+										<ul>
+											<li><a href="#">Magna phasellus</a></li>
+											<li><a href="#">Etiam dolore nisl</a></li>
+											<li><a href="#">Veroeros feugiat</a></li>
+											<li><a href="#">Nisl sed aliquam</a></li>
+											<li><a href="#">Dolore adipiscing</a></li>
+										</ul>
+									</li>
+									<li><a href="#">Veroeros feugiat</a></li>
+								</ul>
+							</li> -->
+							<li class="current"><a href="portfolio.html">Portfolio</a></li>
+							<li><a href="blog.html">Blog</a></li>
+							<li><a href="about_me.html">About Me</a></li>
+						</ul>
+					</nav>
+
+				</section>
+
+			<!-- Main -->
+				<section id="main">
+					<div class="container">
+
+						<!-- Content -->
+							<article class="box post">
+								<a class="image featured"><img src="images/projects/project1/project1banner.png" alt="" /></a>
+								<header>
+									<h2>World Cup 2022 Players Overall Rating</h2>
+									<p>An analysis on World Cup 2022 Players Rating</p>
+									<a href="" target="_blank">Click here for Github Repository that contains all the files in this project</a>
+								</header>
+								<div>
+									<section>
+										<h4>Introduction</h4>
+										<p>This is my first Data Analysis project. The story behind this is when the world cup 2022 is about to start I am curious about the national team
+											that has the highest rating in FIFA 23 game, and also this is the first month of my journey in learning Data Analysis, so I think to myself
+											"Why not I make this into project?" because I also heard someone said it if you're confused on where to start your Data project, find project that you have passion in,
+											therefore I started this.
+										</p>
+										<h3>The Data</h3>
+										<p>The data used in this project came from multiple sources, that includes : 
+										<ol>
+											<li>FIFA 23 Players Dataset - <a href="https://www.kaggle.com/datasets/1898257a1915cbd22dd226f16c66dc218dfb65fd6f062755f4d0243bb8365a99" target="_blank">Kaggle</a></li>
+											<li>Players that is in the WC squad list - <a href="https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_squads" target="_blank">Wikipedia</a></li>
+											<li>Players data that doesnt get included in FIFA 23 game - <a href="https://www.fifaratings.com/" target="_blank">Fifaratings</a></li>
+										</ol>	
+										</p>
+										<h3>Software Used</h3>
+										<table>
+											<colgroup>
+												<col span="1" style="width: 50%;">
+												<col span="1" style="width: 50%;">
+											 </colgroup>
+											<tr>
+												<th><center>Software or Tools</center></th>
+												<th><center>Usage</center></th>
+											</tr>
+											<tr>
+												<td>
+													Jupyter Notebook					
+												</td>
+												<td>
+													<ol>
+														<li>Writing and running Python code</li>
+														<li>Data scraping</li>
+														<li>Data Cleaning</li>
+													</ol>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Microsoft Excel				
+												</td>
+												<td>
+													<ol>
+														<li>Data Entry</li>
+														<li>Combining and cleaning data</li>
+													</ol>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Tableau			
+												</td>
+												<td>
+													Creating Visualization
+												</td>
+											</tr>
+										</table>
+										<h3>Objective</h3>
+										<p>
+											The objective of this project is to:
+										</p>
+										<ol>
+											<li>Find Overall rating of every country in World Cup</li>
+											<li>Create a visualization that can show all country overall rating</li>
+											<li>Create a visualization that can show all country average age</li>
+											<li>Find Country with the highest and the lowest Overall Rating</li>
+											<li>Find Country with the highest DF, MF, and FW overall rating</li>
+										</ol>
+									</section>
+									<section>
+										<h4>Chapter 1 - Preparing the Data</h4>
+										<h3>Cleaning FIFA 23 Dataset</h3>
+										<p>First thing to do we're going to clean the FIFA 23 Dataset from Kaggle with python in Jupyter Notebook.</p>
+										<h1>Import the Library</h1>
+										<pre>import pandas as pd
+
+pd.options.mode.chained_assignment = None</pre>
+										<h1>Load the Data</h1>
+										<pre>fifa23players = pd.read_csv('Fifa 23 Players Data.csv', low_memory=False)
+fifa23players.head()</pre>
+										<a class="image featured2"><img src="/images/projects/project1/fifa23dataset1.PNG"></a>
+										<h1>Shows all the columns</h1>
+										<pre>fifa23players.columns</pre>
+										<h1>Choose the columns needed for the analysis</h1>
+										<pre>columns_needed = [
+	'Known As', 
+	'Full Name', 
+	'Age', 
+	'Overall', 
+	'Positions Played', 
+	'Best Position', 
+	'Nationality', 
+	'Club Name'
+]
+df = pd.DataFrame(fifa23players, columns = columns_needed)
+df</pre>
+										<a class="image featured2"><img src="/images/projects/project1/fifa23dataset2.PNG"></a>
+										<h1>Dropping Null Values</h1>
+										<pre>df.dropna(inplace=True)</pre>
+										<h1>Filter National Teams that participate in the world cup</h1>
+										<pre>teams_worldcup = [
+	'Qatar', 'Brazil', 'Belgium', 'France', 'Argentina', 'England', 'Spain', 'Portugal',
+	'Mexico', 'Netherlands', 'Denmark', 'Germany', 'Uruguay', 'Switzerland', 'United States', 'Croatia',
+	'Senegal', 'Iran', 'Japan', 'Morocco', 'Serbia', 'Poland', 'Korea Republic', 'Tunisia',
+	'Cameroon', 'Canada', 'Ecuador', 'Saudi Arabia', 'Ghana', 'Wales', 'Costa Rica', 'Australia'
+]
+
+df = df[df['Nationality'].isin(teams_worldcup)]
+df</pre>
+										<h1>After filtering, we need to see 32 unique values in nationality, because there are 32 countries in world cup</h1>
+										<pre>from collections import Counter
+											
+counter_object = Counter(df['Nationality'].unique())
+keys = counter_object.keys()
+num_values = len(keys)
+num_values</pre>
+										<a class="image featured2"><img src="/images/projects/project1/fifa23dataset3.PNG"></a>
+										<h1>Sort by Nationality</h1>
+										<pre>df.sort_values(by=['Nationality'], ascending=True, inplace=True)</pre>
+										<h1>Dataframe Info before export</h1>
+										<pre>df.info()</pre>
+										<a class="image featured2"><img src="/images/projects/project1/fifa23dataset4.PNG"></a>
+										<h1>Export the cleaned dataframe to .csv</h1>
+										<pre>df.to_csv('fifa23_players_cleaned.csv', index = False)</pre>
+										<p>After this we will have fifa23_players_cleaned.csv file.</p>
+										<h3>Scraping Wikipedia Page</h3>
+										<p>We're going to scrape the Wiki page to get the list of players that played in World Cup. The web scraping is done with python in Jupyter Notebook.</p>
+										<h1>Import the Library and return the status code of the website</h1>
+										<pre>import pandas as pd
+import requests
+
+pd.options.mode.chained_assignment = None  # default='warn'
+wikiurl = "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_squads"</pre>
+										<p>Make request to the website and return the status code, Status code 200 = it's allowed to scrape. This is
+											quite important, because in some website it's illegal to scrape it.
+										</p>
+										<pre>response = requests.get(wikiurl)
+print(response.status_code)</pre>
+										<a class="image featured2"><img src="/images/projects/project1/wikiscrape1.PNG"></a>
+										<h1>Create a variable that contains all the table from the website</h1>
+										<pre>tables = pd.read_html(wikiurl)</pre>
+										<p>If we do "print(tables)" the output will show all the tables available in that page including the ones
+										that we don't need.</p>
+										<h1>Concate all the tables</h1>
+										<p>We're going to concate the only tables that we need, from the "print(tables)" we can see that after all the tables that contains players data, there will be tables
+											that we're not going to use, so we will only concate the first 32 tables (the amount of countries in World Cup).
+										</p>
+										<pre>tables_concat = pd.concat(tables[:32])
+df = tables_concat[['No.', 'Pos.', 'Player','Club']]
+df</pre>
+										<a class="image featured2"><img src="/images/projects/project1/wikiscrape2.PNG"></a>
+										<h1>Reset the Index</h1>
+										<p>This is important step for inserting their nationality.</p>
+										<pre>df.reset_index(drop=True, inplace=True)</pre>
+										<h1>Create a function to insert nationality of each players</h1>
+										<pre>def nat(a,b,c):
+df.loc[a:b,'Nationality'] = c</pre>
+										<h1>Inseting their Nationality</h1>
+										<p>from the display(df) we can see that the Index and No. can help us see at what rows is the next countries</p>
+										<pre>nat(0,25,'Ecuador')
+nat(26,51,'Netherlands')
+nat(52,77,'Qatar')
+nat(78,103,'Senegal')
+
+nat(104,129,'England')
+nat(130,154,'Iran')
+nat(155,180,'United States')
+nat(181,206,'Wales')
+
+nat(207,232,'Argentina')
+nat(233,258,'Mexico')
+nat(259,284,'Poland')
+nat(285,310,'Saudi Arabia')
+
+nat(311,336,'Australia')
+nat(337,362,'Denmark')
+nat(363,388,'France')
+nat(389,414,'Tunisia')
+
+nat(415,440,'Costa Rica')
+nat(441,466,'Germany')
+nat(467,492,'Japan')
+nat(493,518,'Spain')
+
+nat(519,544,'Belgium')
+nat(545,570,'Canada')
+nat(571,596,'Croatia')
+nat(597,622,'Morocco')
+
+nat(623,648,'Brazil')
+nat(649,674,'Cameroon')
+nat(675,700,'Serbia')
+nat(701,726,'Switzerland')
+
+nat(727,752,'Ghana')
+nat(753,778,'Portugal')
+nat(779,804,'South Korea')
+nat(805,830,'Uruguay')</pre>
+										<h1>Export the Dataframe to .csv</h1>
+										<pre>df.to_csv('wc_players_wiki.csv', index = False)</pre>
+									</section>
+									<section>
+										<h4>Chapter 2 - Data Wrangling</h4>
+										<h3>Load the Data to Excel</h3>
+										<p>Load both .csv files we extracted from python before to Microsoft Excel. In Excel go to Data tab and click Get Data > From File > From text/CSV</p>
+										<a class="image featured2"><img src="/images/projects/project1/excel1.PNG"></a>
+										<h3>INDEX + MATCH</h3>
+										<p>Duplicate the wc_players_wiki sheet and rename it to wc_players_lookup. In this sheet we will fill all the Overall Rating and Age from the Data in fifa23_players_cleaned.<br>
+											<ol>
+												<li>FIrst step is to Find " (captain)" words in the sheet and replace it with "" to remove it.</li>
+												<li>Create 2 new columns, named 'Age' and 'Overall'</li>
+												<li>Formula for Age column =INDEX(fifa23_players_cleaned,MATCH(wc_players_lookup!$C13,fifa23_players_cleaned[Full Name],0),3)</li>
+												<li>Formula for Overall column =INDEX(fifa23_players_cleaned,MATCH(wc_players_lookup!$C2,fifa23_players_cleaned[Full Name],0),4)</li>
+											</ol>
+										</p>
+										<a class="image featured2"><img src="/images/projects/project1/excel2.PNG"></a>
+										<p>
+											After this there will be some rows that are not filled or shown "N.A" value, that is because:
+											<ol>
+												<li>The lookup value not match, the solution is to use known_as tab instead of full name bcs that's what happened in some countries like spain, portugal, or brazil</li>
+												<li>The name could be different, but they are the same person/player, the solution is to search the name manually and copy the name so it can use the index and match</li>
+												<li>The player just not exist in FIFA 23 game because not every player will be included in the game, the solution is to go to fifaratings.com and search for the players, for the age
+													just search the player in Google. </li>
+											</ol>
+										</p>
+										<h3>Create a master sheet</h3>
+										<p>Create a new sheet and rename it to wc_players_master, and this sheet will contains all the Data we're going to use. Copy all the values from lookup Data and paste it to master sheet.
+											and then, we can start the Data Entry process for filling all the missing values, by doing the solution mentioned before.
+										</p>
+										<a class="image featured2"><img src="/images/projects/project1/excel3.PNG"></a>
+										<p>After all the players have their age and overall, we can save this workbook for us to use in Tableau.</p>
+									</section>
+									<section>
+										<h4>Chapter 3 - Tableau</h4>
+										<h3>Load the Excel workbook</h3>
+										<a class="image featured2"><img src="/images/projects/project1/tableau1.PNG"></a>
+										<p>
+											Load the excel workbook we created before, and choose the wc_players_master.
+										</p>
+										<h3>Overall Rating of all Countries</h3>
+										<a class="image featured2"><img src="/images/projects/project1/tableau2.png"></a>
+										<p>
+											We're going to make Bar chart that can show all the Countries Overall Rating with conditional formating. 
+										</p>
+										<ol>
+											<li>Put the Nationality in Columns and Overall in Rows, and change the measure of Overall from SUM to Average.</li>
+											<li>Click Label in Marks and check the Show Mark Button to show the number above the bar chart.</li>
+											<li>Drag Average Overall to Color so we can Color Format it.</li>
+											<li>Click color in Marks and Edit Color, and change it to Red-Green Diverging</li>
+											<li>Sort the Chart from highest to lowest(Descending).</li>
+											<li>Add Continent and Position to Filters, to use it later in dashboard as a filter.</li>
+											<li>Right click on the AVG(Overall) and Change the Format of the numbers to Number (Custom), change it to 1 Decimal.</li>
+										</ol>
+										<h3>Age of all countries</h3>
+										<a class="image featured2"><img src="/images/projects/project1/tableau3.png"></a>
+										<p>For age bar chart we just need to duplicate the sheet before and make a little bit of change.</p>
+										<ol>
+											<li>a</li>
+										</ol>
+										<h3>Highest and Lowest overall</h3>
+										<a class="image featured2"><img src="/images/projects/project1/tableau4.png"></a>
+										<h3>Creating the Dashboard</h3>
+										<a class="image featured2"><img src="/images/projects/project1/tableau5.png"></a>
+										<ol>
+											<li>Set the size of the Dashboard to Fixed Size Custom 1000 x 2000 pixels</li>
+											<li>To add a filter, first add the first sheet which is overall rating bar chart to the dashboard and then click the sheet, after that the Show Cards icon will be able to be clicked. Choose Filters > Continent & Position.</li>
+											<li>The rest of Dashboard making process is self explanatory, in the third image I create yellow lines to show different elements in the dashboard, such as Text Box to show text, the filters, and also the sheet of visualization itself.</li>
+										</ol>
+									</section>
+									<section>
+										<h4>Chapter 4 - Result</h4>
+										<h3>Dashboard</h3>
+										<p>This is the Dashboard that I created, you can filter the data based on position/continent and also hover over the data to show the tooltip. </p>
+										<center><div class='tableauPlaceholder' id='viz1676287790676' style='position: relative'><noscript><a href='#'><img alt='Dashboard ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;FI&#47;FIFAWorldCup22OverallRatingViz&#47;Dashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='FIFAWorldCup22OverallRatingViz&#47;Dashboard' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;FI&#47;FIFAWorldCup22OverallRatingViz&#47;Dashboard&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1676287790676');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='2027px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='2027px';} else { vizElement.style.width='100%';vizElement.style.height='1577px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script></center>
+										<h3>Insights</h3>
+										<ol>
+											<li>Brazil has the highest overall rating of all countries.</li>
+											<li>Qatar has the lowest overall rating of all countries.</li>
+											<li>Netherlands and England has the best DF (Defender) Overall Rating, that means this two teams has the best collection of defensive players.</li>
+											<li>Germany has the highest MF (Midfielder) Overall Rating, that means Germany has the best collection of midfield players.</li>
+											<li>Argentina has the best FW (Forward) Overall Rating, that means Argentina has the best collection of attacking players.</li>
+											<li>Iran has the oldest set of players(28.8 Average), while Ghana has the youngest set of players(24.4 Average).</li>
+										</ol>
+										<h3>Conclusion</h3>
+										<p>After finished creating this Visualization, all my questions before has been answered. I came to conlusion that the Top 10 teams definitely has higher chance getting to knockout stages or even become the champion. </br>
+										But in the end, the ball is round, you'll never know what will happen on the pitch, we might see some surprise like lesser team beating the bigger team, or even proceed to knockout stage.</p>
+									</section>
+								</div>
+							</article>
+					</div>
+				</section>
+
+			<!-- Footer -->
+			<section id="footer">
+				<div class="container">
+					<div class="row aln-center">
+						<div class="col-4 col-12-medium">
+							<section>
+								<header>
+									<center><h2>Social</h2></center>
+								</header>
+								<center><ul class="social">
+									<li><a title="LinkedIn" class="icon brands fa-linkedin" href="https://www.linkedin.com/in/achmad-hafidz7/" target="_blank"><span class="label">LinkedIn</span></a></li>
+									<li><a title="Github" class="icon brands fa-github" href="https://github.com/achmadhafidz7" target="_blank"><span class="label">Github</span></a></li>
+									<!-- <li><a class="icon brands fa-dribbble" href="#"><span class="label">Dribbble</span></a></li> -->
+									<!-- <li><a class="icon brands fa-tumblr" href="#"><span class="label">Tumblr</span></a></li> -->
+									<li><a title="Twitter" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+								</ul></center>
+								
+								<center>
+									<ul class="contact">
+										<li>
+											<h3>Phone :</h3>
+											<p>(+62) 857-7365-4742</p>
+										</li>
+										<li>
+											<h3>E-Mail :</h3>
+											<p><a href="https://mail.google.com/" target="_blank">achmadhafidz7@gmail.com</a></p>
+										</li>
+										<li>
+											<h3>Address :</h3>
+											<p>
+												Depok<br />
+												West Java<br />
+												Indonesia, 16417
+											</p>
+										</li>
+									</ul>
+								</center>
+							</section>
+						</div>
+						<div class="col-12">
+
+							<!-- Copyright -->
+								<div id="copyright">
+									<ul class="links">
+										<li>&copy; Copyright All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+									</ul>
+								</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

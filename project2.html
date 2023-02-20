@@ -1,0 +1,398 @@
+<!DOCTYPE HTML>
+<!--
+	Dopetrope by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Achmad Hafidz</title>
+		<link rel="icon" type="image/png" href="images/titlelogo.png"/>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://kit.fontawesome.com/57e73c674f.js" crossorigin="anonymous"></script>
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<section id="header">
+
+					<!-- Logo -->
+						<h1><a href="index.html">ACHMAD HAFIDZ</a></h1>
+
+					<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<!-- <li>
+								<a href="#">Dropdown</a>
+								<ul>
+									<li><a href="#">Lorem ipsum dolor</a></li>
+									<li><a href="#">Magna phasellus</a></li>
+									<li><a href="#">Etiam dolore nisl</a></li>
+									<li>
+										<a href="#">Phasellus consequat</a>
+										<ul>
+											<li><a href="#">Magna phasellus</a></li>
+											<li><a href="#">Etiam dolore nisl</a></li>
+											<li><a href="#">Veroeros feugiat</a></li>
+											<li><a href="#">Nisl sed aliquam</a></li>
+											<li><a href="#">Dolore adipiscing</a></li>
+										</ul>
+									</li>
+									<li><a href="#">Veroeros feugiat</a></li>
+								</ul>
+							</li> -->
+							<li class="current"><a href="portfolio.html">Portfolio</a></li>
+							<li><a href="blog.html">Blog</a></li>
+							<li><a href="about_me.html">About Me</a></li>
+						</ul>
+					</nav>
+
+				</section>
+
+			<!-- Main -->
+				<section id="main">
+					<div class="container">
+
+						<!-- Content -->
+							<article class="box post">
+								<a class="image featured"><img src="images/projects/project2/project2banner.png" alt="" /></a>
+								<header>
+									<h2>AdventureWorks Sales Analysis</h2>
+									<p>An analysis on AdventureWorks Sales Performance</p>
+									<a href="https://github.com/achmadhafidz7/AdventureWorks_Sales_Analysis" target="_blank">Click here for Github Repository that contains all the files in this project</a>
+								</header>
+								<section>
+									<h4>Introduction</h4>
+									<p>After learning more about data, I wanted to test my SQL skill and my Data Visualization skill, and I think the best way to
+										improve is by doing a project, therefore I create this simple Sales Analysis Project.
+									</p> 
+									<p>Sales Analysis is a process of using data to understand how the business performs in terms of sales. With a dashboard as the end result of this project,
+										we will be able to gather valuable insights from it, and analyze AdventureWorks Sales Performance.
+									</p>
+									<h3>The Data</h3>
+									<p>AdventureWorks Database is a sample database that provided by Microsoft. AdventureWorks database supports standard 
+										online transaction processing scenarios for a fictitious bicycle manufacturer - Adventure Works Cycles. <a href="post1.html">More on AdventureWorks Database.</a>. 
+									</p>
+									<h3>Software Used</h3>
+									<table>
+										<colgroup>
+											<col span="1" style="width: 50%;">
+											<col span="1" style="width: 50%;">
+										 </colgroup>
+										<tr>
+											<th><center>Software or Tools</center></th>
+											<th><center>Usage</center></th>
+										</tr>
+										<tr>
+											<td>
+												<ul>
+													<li>Microsoft SQL Server 2022</li>
+													<li>SQL Server Management Studio</li>
+												</ul>					
+											</td>
+											<td>
+												<ul>
+													<li>Using AdventureWorks Database</li>
+													<li>Data Cleaning with SQL</li>
+												</ul>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Microsoft Power BI				
+											</td>
+											<td>
+												Building Dashboard and Visualization
+											</td>
+										</tr>
+									</table>
+									<h3>Objective</h3>
+									<p>
+										The objective is given by a fictitious Sales Manager (Rahmat) through e-mail, below is the e-mail.
+									</p>
+									<a class="image featured2"><img src="images/projects/project2/businessrequest.png" alt="" /></a>
+									<p>
+										From that E-mail we can conclude that our goal is to Create Interactive Dashboard:
+									</p>
+									<ol>
+										<li>That shows the numbers of sales, profits, orders, and customers</li>
+										<li>That shows the top performing products and customers</li>
+										<li>That shows the numbers of sales against budget</li>
+										<li>That shows map of customer with their sales number</li>
+									</ol>
+									<p>And an additional things I'm going to do is gather some insights from the dashboard.</p>
+								</section>
+								<section>
+									<h4>Chapter 1 - SQL</h4>
+									<h3>Query the data needed from the database.</h3>
+									<p>
+										Before we start loading the data to Power BI, the first thing we need to do is query 
+										or request data from the database system which in this project called AdventureWorksDW2019 Database.
+										The AdventureWorksDW2019 Database contains tables from multiple aspects of the company like customer, employee, sales, etc.<br>
+										This is where SQL skills come in handy, we can request a data that we only need without including other unused tables and we
+										can also transform some of the data to match the spesific format that we want. 
+									</p>
+									<p>
+										The Table that we going to use is:
+									</p>
+									<ul>
+										<li>DimCustomer</li>
+										<li>DimDate</li>
+										<li>DimProduct</li>
+										<li>FactInternetSales</li>
+									</ul>
+									<p>Dim is for Dimension Table, and Fact is for Fact Table. The main difference is Fact Tables contains Measurement, metrics, or facts about business process while
+										Dimension table is a companion to Fact Table that contains descriptive attributes.
+									</p>
+									<p>
+										There are 4 query files that contains SQL code to query the data needed, here are the codes.
+									</p>
+									<h3>DimCustomer SQL Code</h3>
+									<script src="https://gist.github.com/achmadhafidz7/55a8fcf528bc78a2f9b48324dd4b7580.js"></script>
+									<h3>DimDate SQL Code</h3>
+									<script src="https://gist.github.com/achmadhafidz7/db3794a09cfdc4bb98e1f6713cf91e65.js"></script>
+									<h3>DimProduct SQL Code</h3>
+									<script src="https://gist.github.com/achmadhafidz7/ee3b35ade1611f60a4d2c5f1b4037660.js"></script>
+									<h3>FactInternetSales SQL Code</h3>
+									<script src="https://gist.github.com/achmadhafidz7/9ef2f1590aa3902ff8c1d0ca1d2841d5.js"></script>
+								</section>
+								<section>
+									<h4>Chapter 2 - Power BI</h4>
+									<p>
+										After we finished querying all data that we need, we're going to extract the result into .csv file. After that, 
+										load the extracted result + Sales Budget spreadsheet that given via E-mail into Microsoft Power BI to build the Dashboard.
+									</p>
+									<h3>Relationship Data Model</h3>
+									<p>
+										This is the Relationship Data Model after we import all the data, from here we are able to see the difference between
+										dimension table and fact table easier, as the fact table connects to multiple dimension table.
+									</p>
+									<a class="image featured2"><img src="images/projects/project2/relationship_data_model.PNG" alt="" /></a>
+									<h3>Creating Key Measure for Calculating Sales and Budget Differences</h3>
+									<p>
+										We're going to create that can show the Sales - Budget number and Sales/Budget differences Percentage.<br>
+										There are 4 measures that we're going to create to achieve that:
+									</p>
+									<ol>
+										<li>Total Sales = SUM(Fact_Internet_Sales[Sales_Amount])</li>
+										<li>Total Budget = SUM('Sales Budget'[Budget])</li>
+										<li>Sales - Budget = [Total Sales] - [Total Budget]</li>
+										<li>Sales and Budget Differences = ([Total Sales]-[Total Budget])/[Total Budget]</li>
+									</ol>
+									<h3>Slicer for month and year</h3>
+									<a class="image featured2"><img src="images/projects/project2/slicer.png" alt="" /></a>
+									<p>
+										The first thing to do is to create a slicer that can filter all the values in the dashboard to selected month and year. 
+									</p>
+									<ol>
+										<li>Sort the Month_Short column by Month_Number to prevent the system sorting by alphabet.</li>
+										<li>Click the slicer icon to build a slicer, and insert Month_short to the field.</li>
+										<li>After formatting the slicer, copy & paste it, and replace Month_Short with Year in the field. </li>
+									</ol>
+									<h3>Line Chart</h3>
+									<a class="image featured2"><img src="images/projects/project2/linechart.png" alt="" /></a>
+									<p>
+										Next, we're going to create a Line Chart that can show Sales vs Budget Overtime. 
+									</p>
+									<ol>
+										<li>Click Line Chart Icon and put Month_Short in X Axis and Sales_Amount and Budget in Y Axis.</li>
+										<li>Change the color of Sales to Blue and Budget to orange to make a clear distinction between them.</li>
+									</ol>
+									<h3>Top 10 Products and Customers</h3>
+									<a class="image featured2"><img src="images/projects/project2/topproducts.png" alt="" /></a>
+									<p>
+										Next, we're going to create a Bar Chart that can show The Top 10 Customers and Products by Sales. 
+									</p>
+									<ol>
+										<li>Click the Bar Chart Icon and put Full_Name in Y Axis and Sales_Amount in X Axis.</li>
+										<li>Open the Filter Menu and filter the name by Top 10 of the Sales_Amount.</li>
+										<li>Last thing to do is to add Color formatting. The highest value will be bolder, and lowest will be lighter.</li>
+										<li>Copy paste the bar chart and replace the Full_Name in Y Axis to Product Name from DimProduct Table and also add Sub_Category to Tooltips so we can see the sub category. 
+											So we don't need to recreate the bar chart again for the products.</li>
+									</ol>
+									<h3>The Numbers</h3>
+									<a class="image featured2"><img src="images/projects/project2/numbers.png" alt="" /></a>
+									<p>
+										Next is The numbers. These number will be the main thing that people see because the numbers will change based on the selected month, year and even products/customers when they click it.
+									</p>
+									<ol>
+										<li>For the first number we're going to need to import a new visual, the name is Dynamic KPI. After that we're going to click the icon
+											and put the measures we create in the beginning, Sales_Amount in Indicator, Sales - Budget in Comparison 1, and Sales and Budget Difference Percentage in Comparison 2.
+										</li>
+										<li>For the other 3 numbers we just need a normal card and put Profit into fields, do the same for Total Customer (Customer_Key) and Total Order (Sales_Order_Number)</li>
+									</ol>
+									<h3>Map of Customers by sales</h3>
+									<a class="image featured2"><img src="images/projects/project2/map.png" alt="" /></a>
+									<p>Last step is creating Map of customers by their sales. The higher the sales the bolder the color.</p>
+									<ol>
+										<li>Click the filled Map icon and put Customer_State in Location field and Sales_Amount in Tooltips.</li>
+										<li>Color Formatting the map by Sum of Sales_Amount, and give bolder color for highest amount and lighter color for lowest.</li>
+									</ol>
+								</section>
+								<section>
+									<h4>Chapter 3 - Result</h4>
+									<h3>The Dashboard</h3>
+									<a class="image featured2"><img src="images/projects/project2/dashboard.gif" alt="" /></a>
+									<center><a href="https://drive.google.com/file/d/1ZH5rCIq8zEDfgz8g7uscoiXZ6eZjUtd1/view?usp=sharing" target="_blank">Download dashboard file(.pbix) to try it yourself in Power BI</a></center>
+									<h3>Insight and Recommendation</h3>
+									<p>These are the insights that I obtained from the dashboard and also I provide some recommendation based on the insight.</p>
+									<table>
+										<colgroup>
+											<col span="1" style="width: 20%;">
+											<col span="1" style="width: 40%;">
+											<col span="1" style="width: 40%;">
+										 </colgroup>
+										<tr>
+											<th><center>Visualization</center></th>
+											<th><center>Insight</center></th>
+											<th><center>Recommendation</center></th>
+										</tr>
+										<tr>
+											<td>
+												<ol>
+													<li>Line Chart Sales vs Budget by Month</li>
+													<li>Number Cards</li>
+												</ol>
+											</td>
+											<td>Total Sales in 2021 is $5,842,485 and $16,351,550 in 2022, this means the Sales has increased 180% in 2022.</td>
+											<td>
+												<ol>
+													<li>Find the reason for this huge increase by doing deeper analysis to see the factors behind it.</li>
+													<li>Take advantage of this increase by improving production, expanding distribution, or increasing marketing efforts to reach more customers.</li>
+												</ol>
+											</td>
+										</tr>
+										<tr>
+											<td>Line Chart Sales vs Budget by Month</td>
+											<td>
+												<ol>
+													<li>Sales reach it's highest in December for 2021 & 2022.</li>
+													<li>There are a spike of Sales in June 2021 & 2022</li>
+												</ol>
+											</td>
+											<td>
+												<ol>
+													<li>Implement seasonal promotions during the high sales month.</li>
+													<li>Evaluate the inventory management, be sure that the inventory meets the customer demands.</li>
+													<li>Analyzing why certain months has higher sales, and understand the customer behavior.</li>
+												</ol>
+											</td>
+										</tr>
+										<tr>
+											<td>Bar Chart Top 10 Customers</td>
+											<td>Jordan Turner, Maurice Shan, and Janet Munoz is the Top 3 customers by their spending, they
+												are the customers that spend more than $10K.</td>
+											<td>
+												<ol>
+													<li>Retain these high spending customer by growing the relationship between them and the company such as giving
+														special offers, discounts, or rewarding them.</li>
+													<li>Analyze the spending patterns and understand the behavior of these high spender.</li>
+												</ol>
+											</td>
+										</tr>
+										<tr>
+											<td>Bar Chart Top 10 Products</td>
+											<td>Touring Bikes and Mountain Bikes dominates the top 10 products, with 1 Road bikes in number 10 spot.</td>
+											<td>
+												<ol>
+													<li>Expand the Touring Bikes and Mountain Bikes Line</li>
+													<li>Optimize the price and make changes if necessary</li>
+												</ol>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<ol>
+													<li>Geography Map</li>
+													<li>Number Cards</li>
+												</ol>
+											</td>
+											<td>California is the highest contributor out of all states with 4,17 milion worth of Total Sales, 1.75 milion worth of profit, 4333 Customers, and 4981 of Orders.</td>
+											<td>
+												<ol>
+													<li>Invest in California and other high performing state. The investment could be something like improved marketing, opening more store and staff to support the growth</li>
+													<li>Analyze differences between the high performing and low performing state, to understand the factors behind the high performance.</li>
+													<li>Replicate the succesful model.</li>
+												</ol>
+											</td>
+										</tr>
+									</table>
+									<h3>Conlusion</h3>
+									<p>AdventureWorks Cycle has gained a massive amount of Sales increase in the year of 2022, with this sales increase, that means the profit is getting bigger, brand awareness is growing, customer is increasing and they will spend more.</br>
+										These all are a really good positive, but there also room for improvement such as expanding the business, optimizing Inventory, retain the customers, and analyzing different aspects of the business.
+										A business should never be satisfied, always achieve to grow and expand.
+									</p>
+								</section>
+							</article>
+					</div>
+				</section>
+
+			<!-- Footer -->
+			<section id="footer">
+				<div class="container">
+					<div class="row aln-center">
+						<div class="col-4 col-12-medium">
+							<section>
+								<header>
+									<center><h2>Social</h2></center>
+								</header>
+								<center><ul class="social">
+									<li><a title="LinkedIn" class="icon brands fa-linkedin" href="https://www.linkedin.com/in/achmad-hafidz7/" target="_blank"><span class="label">LinkedIn</span></a></li>
+									<li><a title="Github" class="icon brands fa-github" href="https://github.com/achmadhafidz7" target="_blank"><span class="label">Github</span></a></li>
+									<!-- <li><a class="icon brands fa-dribbble" href="#"><span class="label">Dribbble</span></a></li> -->
+									<!-- <li><a class="icon brands fa-tumblr" href="#"><span class="label">Tumblr</span></a></li> -->
+									<li><a title="Twitter" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+								</ul></center>
+								
+								<center>
+									<ul class="contact">
+										<li>
+											<h3>Phone :</h3>
+											<p>(+62) 857-7365-4742</p>
+										</li>
+										<li>
+											<h3>E-Mail :</h3>
+											<p><a href="https://mail.google.com/" target="_blank">achmadhafidz7@gmail.com</a></p>
+										</li>
+										<li>
+											<h3>Address :</h3>
+											<p>
+												Depok<br />
+												West Java<br />
+												Indonesia, 16417
+											</p>
+										</li>
+									</ul>
+								</center>
+							</section>
+						</div>
+						<div class="col-12">
+
+							<!-- Copyright -->
+								<div id="copyright">
+									<ul class="links">
+										<li>&copy; Copyright All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+									</ul>
+								</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
