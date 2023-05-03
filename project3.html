@@ -1,0 +1,430 @@
+<!DOCTYPE HTML>
+<!--
+	Dopetrope by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+				<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-15CBBX64BJ"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'G-15CBBX64BJ');
+		</script>
+		<title>Achmad Hafidz</title>
+		<link rel="icon" type="image/png" href="images/titlelogo.png"/>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://kit.fontawesome.com/57e73c674f.js" crossorigin="anonymous"></script>
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<section id="header">
+
+					<!-- Logo -->
+						<h1><a href="index.html">ACHMAD HAFIDZ</a></h1>
+
+					<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<!-- <li>
+								<a href="#">Dropdown</a>
+								<ul>
+									<li><a href="#">Lorem ipsum dolor</a></li>
+									<li><a href="#">Magna phasellus</a></li>
+									<li><a href="#">Etiam dolore nisl</a></li>
+									<li>
+										<a href="#">Phasellus consequat</a>
+										<ul>
+											<li><a href="#">Magna phasellus</a></li>
+											<li><a href="#">Etiam dolore nisl</a></li>
+											<li><a href="#">Veroeros feugiat</a></li>
+											<li><a href="#">Nisl sed aliquam</a></li>
+											<li><a href="#">Dolore adipiscing</a></li>
+										</ul>
+									</li>
+									<li><a href="#">Veroeros feugiat</a></li>
+								</ul>
+							</li> -->
+							<li class="current"><a href="portfolio.html">Portfolio</a></li>
+							<li><a href="blog.html">Blog</a></li>
+							<li><a href="about_me.html">About Me</a></li>
+						</ul>
+					</nav>
+
+				</section>
+
+			<!-- Main -->
+				<section id="main">
+					<div class="container">
+
+						<!-- Content -->
+							<article class="box post">
+								<a class="image featured"><img src="images/projects/project3/project3banner.png" alt="" /></a>
+								<header>
+									<h2>RFM Customer Segmentation</h2>
+									<p>Customer Segmentation of AdventureWorks Cycle customer</p>
+									<a href="" target="_blank">Click here for Github Repository that contains all the files in this project</a>
+								</header>
+								<div>
+									<section>
+										<h4>Introduction</h4>
+										<p>RFM analysis is a customer segmentation technique that is used to identify groups of customers based on their purchasing behavior. 
+											RFM stands for Recency, Frequency, and Monetary Value. These three metrics are used to evaluate customer behavior and to classify customers into different groups or segments, based on their buying habits and customer value.</br>
+										</br>
+											A brief explanation of each of the RFM components:</br>
+											1. Recency: How long since the customer last purchase is? (in days)</br>
+											2. Frequency: How many times the customer made purchase?</br>
+											3. Monetary: How much the customer spend in total?</br>
+										
+										</br>
+											In this project I will segment the customer of AdventureWorks Cycle with RFM analysis.
+										</p>
+										<h3>The Data</h3>
+										<p>The data used in this project came from AdventureWorks Database : 
+										<ol>
+											<li>AdventureWorks Database - <a href="post1.html" target="_blank">AdventureWorksDB Tutorial</a></li>
+											<li>FactInternetSales Dataset - <a href="#" target="_blank">GDrive Dataset Download</a></li>
+										</ol>	
+										</p>
+										<h3>Software Used</h3>
+										<p>The Software I used is Jupyter Lab, a notebook to write python code and I used multiple libraries as below:</p>
+										<table>
+											<colgroup>
+												<col span="1" style="width: 50%;">
+												<col span="1" style="width: 50%;">
+											 </colgroup>
+											<tr>
+												<th><center>Library</center></th>
+												<th><center>Usage</center></th>
+											</tr>
+											<tr>
+												<td>
+													Pandas					
+												</td>
+												<td>
+													<ol>
+														<li>Import/Exporting Data</li>
+														<li>Manipulating Data</li>
+														<li>Other Data Analysis Task</li>
+													</ol>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Numpy			
+												</td>
+												<td>
+													Working with Numerical Value
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Matplotlib and Seaborn		
+												</td>
+												<td>
+													Creating Visualization
+												</td>
+											</tr>
+										</table>
+										<h3>Objective</h3>
+										<p>
+											Complete RFM customer segmentation Analysis of AdventureWorks Cycle and Export the Dataset for future analysis.
+										</p>
+									</section>
+									<section>
+										<h4>Chapter 1 - Preparing the Data</h4>
+										<h3>Cleaning FactInternetSales Dataset</h3>
+										<p>Data cleaning is important step in Data Analysis, it deals with correcting errors, inconsistencies, and inaccuracies of data
+											, clean data = clean result.</p>
+										<h1>Import the Library</h1>
+										<pre>import pandas as pd
+pd.set_option("display.max_column", 100)
+
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Datetime module
+from datetime import datetime, date, timedelta</pre>
+										<h1>Import Dataset</h1>
+										<pre>df = pd.read_csv("FactInternetSales.csv")
+df.head()</pre>
+										<a class="image featured2"><img src="/images/projects/project3/1,1.PNG"></a>
+										<h1>Get the list of columns</h1>
+										<pre>df.columns</pre>
+										<a class="image featured2"><img src="/images/projects/project3/1,2.PNG"></a>
+										<h1>Drop unnecessary columns</h1>
+										<pre>df = df[['CustomerKey','SalesOrderNumber','SalesAmount', 'OrderDate']].copy()
+df.head()</pre>
+										<a class="image featured2"><img src="/images/projects/project3/1,3.PNG"></a>
+										<h1>Check the data info</h1>
+										<pre>df.info()</pre>
+										<a class="image featured2"><img src="/images/projects/project3/1,4.PNG"></a>
+										<h1>Change OrderDate column dtype to datetime</h1>
+										<pre>df['OrderDate'] = pd.to_datetime(df['OrderDate'], format="%Y/%m/%d")
+df.info()</pre>
+										<a class="image featured2"><img src="/images/projects/project3/1,5.PNG"></a>
+										<h1>Checking if the OrderDate column data match the format by returning the min and max of day/month/year</h1>
+										<pre># Check the day column
+day_date = df['OrderDate'].dt.day
+print("day_min: %i" %day_date.min())
+print("day_max: %i \n" %day_date.max())
+
+# Check the month column
+month_date = df['OrderDate'].dt.month
+print("month_min: %i" %month_date.min())
+print("month_max: %i \n" %month_date.max())
+
+# Check the month column
+year_date = df['OrderDate'].dt.year
+print("year_min: %i" %year_date.min())
+print("year_max: %i \n" %year_date.max())</pre>
+										<a class="image featured2"><img src="/images/projects/project3/1,6.PNG"></a>
+										<h1>Change column name</h1>
+										<pre># the column name is already pretty good, but I prefer use lowercase and use underscore instead of space, 
+# for me, it's easier to read
+
+df.rename(columns={'CustomerKey':'customer_key','SalesOrderNumber':'sales_order_number',
+			'SalesAmount':'sales_amount', 'OrderDate':'order_date'}, inplace = True)
+df.head()</pre>
+										<a class="image featured2"><img src="/images/projects/project3/1,7.PNG"></a>	
+										<p>
+											After cleaning the Data we will have a DataFrame that contains the column of:
+											<ol>
+												<li>customer_key : Customer Key unique ID</li>
+												<li>sales_order_number : The order ID, used for calculate Frequency</li>
+												<li>sales_amount : The amount of transaction, used for calculate Monetary</li>
+												<li>order_date : The date of transaction, used for calculate Recency</li>
+											</ol>
+										</p>
+									</section>
+									<section>
+										<h4>Chapter 2 - Creating RFM Table</h4>
+										<h1>Groupby</h1>
+										<p>
+											We need to group the rfm by the customer, sales order number, order date to remove duplicates
+											and sum the sales amount
+										</p>
+										<pre>df = df.groupby(['customer_key','sales_order_number','order_date']).sales_amount.sum()
+df.head()</pre>
+										<a class="image featured2"><img src="/images/projects/project3/2,1.PNG"></a>
+										<h1>Reset Index</h1>
+										<p>I reset the index to get the DataFrame.</p>
+										<pre>df = df.reset_index()
+df.head(10)</pre>
+										<a class="image featured2"><img src="/images/projects/project3/2,2.PNG"></a>
+										<h1>Create Recency Table</h1>
+										<p>To get the recency, calculate the latest day in dataset, and add 1 day to it and then subtitute it with the latest day of each customer.</br>
+											I decided to add 1 day to prevent ambigous analysis/calculation in further step</br>
+											example = df.recency.min() = 0 will be 1</p>
+										<pre>daydiff = (df.order_date.max() + timedelta(days=1)) - df.groupby('customer_key').order_date.max()
+recency = daydiff.dt.days
+recency = recency.reset_index()
+recency = pd.DataFrame(recency)
+
+recency = recency.rename(columns={'order_date':'recency'})
+recency.head()</pre>
+										<a class="image featured2"><img src="/images/projects/project3/2,3.PNG"></a>
+										<h1>Create Frequency Table</h1>
+										<p>To get the frequency of each customer, group by customer_key column and count the sales_order_number.</p>
+										<pre>freq = df.groupby('customer_key').sales_order_number.count().reset_index()
+freq = freq.rename(columns = {'sales_order_number':'frequency'})
+freq.head()</pre>
+										<a class="image featured2"><img src="/images/projects/project3/2,4.PNG"></a>
+										<h1>Create Monetary Table</h1>
+										<p>To get the monetary, group by customer_key column and sum the sales_amount.</p>
+										<pre>monetary = df.groupby('customer_key').sales_amount.sum().reset_index()
+monetary = monetary.rename(columns = {'sales_amount':'monetary'})
+monetary.head()</pre>
+										<a class="image featured2"><img src="/images/projects/project3/2,5.PNG"></a>
+										<h1>Merge R, F, and M table</h1>
+										<p>Merge the R, F, and M table to get the full rfm table/dataframe</p>
+										<pre>rfm = pd.merge(recency, freq, on = 'customer_key',how = 'inner')
+rfm = pd.merge(rfm, monetary, on = 'customer_key',how = 'inner')
+rfm.head()</pre>
+										<a class="image featured2"><img src="/images/projects/project3/2,6.PNG"></a>
+										<p>After this step, we will have the rfm dataframe that we can use for segmentation.</p>
+									</section>
+									<section>
+										<h4>Chapter 3 - Calculate RFM Score</h4>
+										<h1>Calculate RFM Score</h1>
+										<p>The R and M score will be calculate with quantiles of 4 using pd.qcut so it will be divided into 4 score, lower R will get 4 while
+											higher M will get 4. The Frequency of 1 = 1 score, 2 = 2 score, 3 = 3 score, and > 4 = 4 score.
+										</p>
+										<pre># R score
+rfm["r"] = pd.qcut(rfm["recency"],4,labels=[4,3,2,1])
+
+# F score
+f_conditions = [(rfm['frequency'] == 1), (rfm['frequency'] == 2), (rfm['frequency'] == 3), (rfm['frequency'] >= 4)]
+f_results = [1,2,3,4]
+rfm['f'] = np.select(f_conditions, f_results)
+
+# M score
+rfm["m"] = pd.qcut(rfm["monetary"],4,labels=[1,2,3,4])
+
+# RFM Combined Score
+rfm["rfm_score"] = rfm["r"].astype(str) +rfm["f"].astype(str) + rfm["m"].astype(str)
+
+rfm.head()</pre>
+										<a class="image featured2"><img src="/images/projects/project3/3,1.PNG"></a>
+										<h1>RFM Segmentation</h1>
+										<p>The number of segment is usually determine by the needs or the strategy of the company, I divided into 9 segments 
+											and each segment have the score as image below.
+										</p>
+										<a class="image featured2"><img src="/images/projects/project3/segments.PNG"></a>
+										<pre>rfm_seg = {
+	r'444': "Champions",
+	r'[2-4][3-4][2-4]': "Loyal Customers",
+	r'[2-4][2-4]4': "Big Spender",
+	r'4[1-3][1-4]': "Recent Customers",
+	r'[2-4][1-3][1-4]': "Needs Attention",
+	r'1[2-4][1-4]': "Almost Lost",
+	r'11[1-4]': "Lost Customers"
+}
+
+rfm['Segment'] = rfm['r'].astype(str) + rfm['f'].astype(str) + rfm['m'].astype(str)
+rfm['Segment'] = rfm['Segment'].replace(rfm_seg, regex=True)
+rfm.head()</pre>
+										<a class="image featured2"><img src="/images/projects/project3/3,2.PNG"></a>
+										<p>
+											The rfm segmentation is done, after this step we have a dataframe that contains the rfm score and their segment, 
+											we can use this for a marketing strategy on what to do with each segment or to do further analysis on the customers.  
+										</p>
+									</section>
+									<section>
+										<h4>Chapter 4 - Visualization</h4>
+										<h1>Counting each segments</h1>
+										<pre>seg_count = rfm.Segment.value_counts()
+seg_count</pre>
+										<a class="image featured2"><img src="/images/projects/project3/4,1.PNG"></a>
+										<h1>Create dataframe for visualization</h1>
+										<pre>seg_count = pd.DataFrame(data = seg_count)
+seg_count = seg_count.reset_index()
+seg_count = seg_count.rename(columns={'index':'segment','Segment':'cust_count'})
+seg_count.head()</pre>
+										<a class="image featured2"><img src="/images/projects/project3/4,2.PNG"></a>
+										<h1>Bar Chart</h1>
+										<pre>palette_color = sns.color_palette("tab10")
+plt.figure(figsize = (15,8))
+sns.barplot(x = seg_count.segment,y = seg_count.cust_count, palette = palette_color)
+plt.show()</pre>
+										<a class="image featured2"><img src="/images/projects/project3/4,3.PNG"></a>
+										<h1>Percentage of each segment</h1>
+										<p>To get the percentage, simply divide cust_count with 18484(Total Customer) and multiply by 100.</p>
+										<pre>percentage_dec = seg_count.cust_count / 18484
+seg_percentage = round(percentage_dec, 4)
+seg_count['percentage'] = seg_percentage * 100
+seg_count</pre>
+										<a class="image featured2"><img src="/images/projects/project3/4,4.PNG"></a>
+										<h1>Pie Chart</h1>
+										<pre>palette_color = sns.color_palette("tab10")
+plt.pie(seg_count.cust_count, labels = seg_count.segment, colors = palette_color, autopct='%1.1f%%')
+plt.show()</pre>
+										<a class="image featured2"><img src="/images/projects/project3/4,5.PNG"></a>
+
+										<h1>Export dataframe for further analysis</h1>
+										<pre>rfm.to_csv("rfm_segmented.csv", index = False)</pre>
+										<h3>Conclusion</h3>
+										<p>After finishing this segmentation I came to conclusion that RFM Segmentation is a tool that can help business
+											to gain deeper understanding of their customers. By analyzing three key factors - Recency, Frequency, and Monetary - 
+											RFM allows companies to divide their customers into different segments, each with their own distinct characteristics and needs.</br>
+											From this segmentation there are several points and insights we can take.
+											<ol>
+												<li>From the chart shown, we can clearly see that "Needs Attention" customer is higher than other segment with 35.5%. This is because "Needs Attention"
+													customers are basically regular customer, they have a range of score of what regular customer might be average R average F and average M.
+													This customer is needing attention, because they can become a more loyal customer.
+												</li>
+												<li>"About to sleep" customer is third highest with 17.4%. Customer in this segment have low RFM score of 1-2, it means the customers in This
+													segment more likely to be churn or lost.</li>
+												<li>It will be interesting to analyze more on what is the characteristics of the customers of each segment, maybe they came from certain area, or
+													specific age groups, or countries, etc.
+												</li>
+											</ol>
+										</p>
+										<p>
+											After this, usually we can apply different strategy for each segment, here are what I think they should do with their
+											marketing strategy with different segment.
+										</p>
+										<a class="image featured2"><img src="/images/projects/project3/strategies.PNG"></a>
+										<p>With more information such as favorite product/category of each segments, where do they live, day of transactions, etc. we could definitely
+											be more precise with the strategy.</p>
+									</section>
+								</div>
+							</article>
+					</div>
+				</section>
+
+			<!-- Footer -->
+			<section id="footer">
+				<div class="container">
+					<div class="row aln-center">
+						<div class="col-4 col-12-medium">
+							<section>
+								<header>
+									<center><h2>Social</h2></center>
+								</header>
+								<center><ul class="social">
+									<li><a title="LinkedIn" class="icon brands fa-linkedin" href="https://www.linkedin.com/in/achmad-hafidz7/" target="_blank"><span class="label">LinkedIn</span></a></li>
+									<li><a title="Github" class="icon brands fa-github" href="https://github.com/achmadhafidz7" target="_blank"><span class="label">Github</span></a></li>
+									<!-- <li><a class="icon brands fa-dribbble" href="#"><span class="label">Dribbble</span></a></li> -->
+									<!-- <li><a class="icon brands fa-tumblr" href="#"><span class="label">Tumblr</span></a></li> -->
+									<li><a title="Twitter" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+								</ul></center>
+								
+								<center>
+									<ul class="contact">
+										<li>
+											<h3>Phone :</h3>
+											<p>(+62) 857-7365-4742</p>
+										</li>
+										<li>
+											<h3>E-Mail :</h3>
+											<p><a href="https://mail.google.com/" target="_blank">achmadhafidz7@gmail.com</a></p>
+										</li>
+										<li>
+											<h3>Address :</h3>
+											<p>
+												Depok<br />
+												West Java<br />
+												Indonesia, 16417
+											</p>
+										</li>
+									</ul>
+								</center>
+							</section>
+						</div>
+						<div class="col-12">
+
+							<!-- Copyright -->
+								<div id="copyright">
+									<ul class="links">
+										<li>&copy; Copyright All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+									</ul>
+								</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
