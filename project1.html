@@ -80,7 +80,7 @@
 										<p>This is my first Data Analysis project. The story behind this is when the world cup 2022 is about to start I am curious about the national team
 											that has the highest rating in FIFA 23 game, and also this is the first month of my journey in learning Data Analysis, so I think to myself
 											"Why not I make this into project?" because I also heard someone said it if you're confused on where to start your Data project, find project that you have passion in,
-											therefore I started this.
+											therefore I make this into data project.
 										</p>
 										<h3>The Data</h3>
 										<p>The data used in this project came from multiple sources, that includes : 
@@ -107,7 +107,7 @@
 												<td>
 													<ol>
 														<li>Writing and running Python code</li>
-														<li>Data scraping</li>
+														<li>Website Scraping</li>
 														<li>Data Cleaning</li>
 													</ol>
 												</td>
@@ -117,10 +117,7 @@
 													Microsoft Excel				
 												</td>
 												<td>
-													<ol>
-														<li>Data Entry</li>
-														<li>Combining and cleaning data</li>
-													</ol>
+													Data Wrangling
 												</td>
 											</tr>
 											<tr>
@@ -128,7 +125,7 @@
 													Tableau			
 												</td>
 												<td>
-													Creating Visualization
+													Creating Visualization and Dashboard
 												</td>
 											</tr>
 										</table>
@@ -147,7 +144,8 @@
 									<section>
 										<h4>Chapter 1 - Preparing the Data</h4>
 										<h3>Cleaning FIFA 23 Dataset</h3>
-										<p>First thing to do we're going to clean the FIFA 23 Dataset from Kaggle with python in Jupyter Notebook.</p>
+										<p>First thing to do we're going to clean the FIFA 23 Dataset from Kaggle with python in Jupyter Notebook. The purpose of this is to get the data that 
+											we wanted only, and adjust the formatting of some columns to the desired one.</p>
 										<h1>Import the Library</h1>
 										<pre>import pandas as pd
 
@@ -155,10 +153,13 @@ pd.options.mode.chained_assignment = None</pre>
 										<h1>Load the Data</h1>
 										<pre>fifa23players = pd.read_csv('Fifa 23 Players Data.csv', low_memory=False)
 fifa23players.head()</pre>
+										<p>This is how the raw dataset looks like, it has 89 columns, which is too much.</p>
 										<a class="image featured2"><img src="/images/projects/project1/fifa23dataset1.PNG"></a>
 										<h1>Shows all the columns</h1>
+										<p>View all the columns in this dataset.</p>
 										<pre>fifa23players.columns</pre>
-										<h1>Choose the columns needed for the analysis</h1>
+										<h1>Choose the columns needed</h1>
+										<p>We need to drop/remove all unused columns, for it to be easier to work with and also to make the software faster.</p>
 										<pre>columns_needed = [
 	'Known As', 
 	'Full Name', 
@@ -173,6 +174,7 @@ df = pd.DataFrame(fifa23players, columns = columns_needed)
 df</pre>
 										<a class="image featured2"><img src="/images/projects/project1/fifa23dataset2.PNG"></a>
 										<h1>Dropping Null Values</h1>
+										<p>Drop the rows that doesn't have any data.</p>
 										<pre>df.dropna(inplace=True)</pre>
 										<h1>Filter National Teams that participate in the world cup</h1>
 										<pre>teams_worldcup = [
@@ -184,7 +186,8 @@ df</pre>
 
 df = df[df['Nationality'].isin(teams_worldcup)]
 df</pre>
-										<h1>After filtering, we need to see 32 unique values in nationality, because there are 32 countries in world cup</h1>
+										<h1>Count the values in Nationality</h1>
+										<p>We need to have 32 unique values in nationality, because there are 32 countries in world cup.</p>
 										<pre>from collections import Counter
 											
 counter_object = Counter(df['Nationality'].unique())
@@ -193,15 +196,20 @@ num_values = len(keys)
 num_values</pre>
 										<a class="image featured2"><img src="/images/projects/project1/fifa23dataset3.PNG"></a>
 										<h1>Sort by Nationality</h1>
+										<p>Sort the data for it to be more organized.</p>
 										<pre>df.sort_values(by=['Nationality'], ascending=True, inplace=True)</pre>
 										<h1>Dataframe Info before export</h1>
+										<p>This is the dataframe info before export, 8columns, 11611 rows no null.</p>
 										<pre>df.info()</pre>
 										<a class="image featured2"><img src="/images/projects/project1/fifa23dataset4.PNG"></a>
 										<h1>Export the cleaned dataframe to .csv</h1>
+										<p>Export the dataframe to get the .csv file.</p>
 										<pre>df.to_csv('fifa23_players_cleaned.csv', index = False)</pre>
 										<p>After this we will have fifa23_players_cleaned.csv file.</p>
+										
 										<h3>Scraping Wikipedia Page</h3>
-										<p>We're going to scrape the Wiki page to get the list of players that played in World Cup. The web scraping is done with python in Jupyter Notebook.</p>
+										<p>Website Scraping is a process of extraction of data from the website page. Here we're going to scrape the Wiki page 
+											to get the list of players that played in World Cup. The web scraping is done with python in Jupyter Notebook.</p>
 										<h1>Import the Library and return the status code of the website</h1>
 										<pre>import pandas as pd
 import requests
@@ -215,25 +223,31 @@ wikiurl = "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_squads"</pre>
 print(response.status_code)</pre>
 										<a class="image featured2"><img src="/images/projects/project1/wikiscrape1.PNG"></a>
 										<h1>Create a variable that contains all the table from the website</h1>
+										<p>This is basically the scraping process. We need to store all the scraped data into variables, it's called 
+											tables. </br>
+											If we do "print(tables)" the output will show all the tables available in that page including the ones that we don't need. 
+											As we can see, the tables we need is the first 32 tables.</p>
 										<pre>tables = pd.read_html(wikiurl)</pre>
 										<p>If we do "print(tables)" the output will show all the tables available in that page including the ones
 										that we don't need.</p>
 										<h1>Concate all the tables</h1>
-										<p>We're going to concate the only tables that we need, from the "print(tables)" we can see that after all the tables that contains players data, there will be tables
-											that we're not going to use, so we will only concate the first 32 tables (the amount of countries in World Cup).
+										<p>we're going to concate/merge the tables we need. Concate the first 32 tables we need.
 										</p>
 										<pre>tables_concat = pd.concat(tables[:32])
 df = tables_concat[['No.', 'Pos.', 'Player','Club']]
 df</pre>
 										<a class="image featured2"><img src="/images/projects/project1/wikiscrape2.PNG"></a>
-										<h1>Reset the Index</h1>
-										<p>This is important step for inserting their nationality.</p>
+										<h1>Reset Index</h1>
+										<p>This step is needed because I wanted to insert their nationality based on their index.</p>
 										<pre>df.reset_index(drop=True, inplace=True)</pre>
 										<h1>Create a function to insert nationality of each players</h1>
+										<p>I created this function that will have 3 arguments (a,b,c) a = Start of index, b = End of Index, c = Nationality inserted.</p>
 										<pre>def nat(a,b,c):
 df.loc[a:b,'Nationality'] = c</pre>
 										<h1>Inseting their Nationality</h1>
-										<p>from the display(df) we can see that the Index and No. can help us see at what rows is the next countries</p>
+										<p>How it works is we simply insert the 3 arguments there and the function will locate the data with .loc[] method and index it with a,b arguments, and then 
+											it will insert the c argument(Nationality) to 'Nationality' Column. </br> 
+										from the display(df) we can see that the Index and 'No.' Column that can help us see at what rows/index is the next countries for a and b arguments.</p>
 										<pre>nat(0,25,'Ecuador')
 nat(26,51,'Netherlands')
 nat(52,77,'Qatar')
@@ -274,10 +288,16 @@ nat(753,778,'Portugal')
 nat(779,804,'South Korea')
 nat(805,830,'Uruguay')</pre>
 										<h1>Export the Dataframe to .csv</h1>
+										<p>Export the dataframe to get the .csv file.</p>
 										<pre>df.to_csv('wc_players_wiki.csv', index = False)</pre>
 									</section>
 									<section>
 										<h4>Chapter 2 - Data Wrangling</h4>
+										<p>Data wrangling involves various operations to transform and prepare data for analysis, it is similar to data cleaning
+											but Data wrangling is much broader task than cleaning, this includes combining datasets and adding values from different sources.
+											In this project I will combine the two .csv we get from before and also adding some values from other sources to fill some of the players data.
+											The result of this process is we will have one table contains all the world cup players without single player missing their values, so we can
+											use it for analysis more accurately.</p>
 										<h3>Load the Data to Excel</h3>
 										<p>Load both .csv files we extracted from python before to Microsoft Excel. In Excel go to Data tab and click Get Data > From File > From text/CSV</p>
 										<a class="image featured2"><img src="/images/projects/project1/excel1.PNG"></a>
@@ -302,13 +322,17 @@ nat(805,830,'Uruguay')</pre>
 										</p>
 										<h3>Create a master sheet</h3>
 										<p>Create a new sheet and rename it to wc_players_master, and this sheet will contains all the Data we're going to use. Copy all the values from lookup Data and paste it to master sheet.
-											and then, we can start the Data Entry process for filling all the missing values, by doing the solution mentioned before.
+											and then, we can start the Data Entry process for filling all the missing values, by doing the solution mentioned before in point 3 above.
 										</p>
 										<a class="image featured2"><img src="/images/projects/project1/excel3.PNG"></a>
-										<p>After all the players have their age and overall, we can save this workbook for us to use in Tableau.</p>
+										<p>After all the players have their age and overall, we can save this workbook and export it for us to use in Tableau.</p>
 									</section>
 									<section>
 										<h4>Chapter 3 - Tableau</h4>
+										<p>In this Chapter we will visualize our data so we can see it more clearly. Imagine looking at thousands of rows
+											of data and try to analyze it straight away, it will take an awful amount of time. So, one of the purpose of 
+											Data visualization is to made the analysis easier by looking at different charts and graphs that fit with the analysis. This will allow
+											us to gather insights and explore the data more.</p>
 										<h3>Load the Excel workbook</h3>
 										<a class="image featured2"><img src="/images/projects/project1/tableau1.PNG"></a>
 										<p>
@@ -332,22 +356,37 @@ nat(805,830,'Uruguay')</pre>
 										<a class="image featured2"><img src="/images/projects/project1/tableau3.png"></a>
 										<p>For age bar chart we just need to duplicate the sheet before and make a little bit of change.</p>
 										<ol>
-											<li>a</li>
+											<li>Remove the AVG(Overall) and replace it wih AVG(Age).</li>
+											<li>Change the color of the bar, the lowest will be green and the highest will be brown 
+												(Because green match with young and brown match with old just like a plant).</li>
 										</ol>
 										<h3>Highest and Lowest overall</h3>
 										<a class="image featured2"><img src="/images/projects/project1/tableau4.png"></a>
+										<p>For Highest and Lowest chart we will duplicate it just like before.</p>
+										<ol>
+											<li>Put Nationality to Filter to use a filter.</li>
+											<li>Change the filter setting to Top > By field > Top 10 by Overall Average.</li>
+											<li>Change the color to dark blue for highest and light blue for lowest.</li>
+											<li>For the Lowest duplicate the Highest sheet and just change the filter from Top 10 to Bottom 10.</li>
+											<li>Change the color to dark red for Lowest and light red for highest.</li>
+										</ol>
 										<h3>Creating the Dashboard</h3>
 										<a class="image featured2"><img src="/images/projects/project1/tableau5.png"></a>
 										<ol>
 											<li>Set the size of the Dashboard to Fixed Size Custom 1000 x 2000 pixels</li>
-											<li>To add a filter, first add the first sheet which is overall rating bar chart to the dashboard and then click the sheet, after that the Show Cards icon will be able to be clicked. Choose Filters > Continent & Position.</li>
-											<li>The rest of Dashboard making process is self explanatory, in the third image I create yellow lines to show different elements in the dashboard, such as Text Box to show text, the filters, and also the sheet of visualization itself.</li>
+											<li>To add a filter, first add the first sheet which is overall rating bar chart to the dashboard and then click the sheet, 
+												after that the Show Cards icon will be able to be clicked. Choose Filters > Continent & Position.</li>
+											<li>in the third image I create yellow lines to show different elements in the dashboard, 
+												such as Text Box to show text that are seperated from the visualization sheet before, 
+												filters, and also the sheet of visualization we created before.</li>
+											<li>The rest of Dashboard making process is quite easy, we just need to drag the sheet we created before 
+												(it's on the left side of the dashboard sheet) and then adjust the size.</li>
 										</ol>
 									</section>
 									<section>
 										<h4>Chapter 4 - Result</h4>
 										<h3>Dashboard</h3>
-										<p>This is the Dashboard that I created, you can filter the data based on position/continent and also hover over the data to show the tooltip. </p>
+										<p>This is the Dashboard that I created, you can filter the data based on position/continent and also hover over the data to show the detailed info (tooltip).</p>
 										<center><div class='tableauPlaceholder' id='viz1676287790676' style='position: relative'><noscript><a href='#'><img alt='Dashboard ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;FI&#47;FIFAWorldCup22OverallRatingViz&#47;Dashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='FIFAWorldCup22OverallRatingViz&#47;Dashboard' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;FI&#47;FIFAWorldCup22OverallRatingViz&#47;Dashboard&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1676287790676');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='2027px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='2027px';} else { vizElement.style.width='100%';vizElement.style.height='1577px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script></center>
 										<h3>Insights</h3>
 										<ol>
@@ -359,8 +398,18 @@ nat(805,830,'Uruguay')</pre>
 											<li>Iran has the oldest set of players(28.8 Average), while Ghana has the youngest set of players(24.4 Average).</li>
 										</ol>
 										<h3>Conclusion</h3>
-										<p>After finished creating this Visualization, all my questions before has been answered. I came to conlusion that the Top 10 teams definitely has higher chance getting to knockout stages or even become the champion. </br>
-										But in the end, the ball is round, you'll never know what will happen on the pitch, we might see some surprise like lesser team beating the bigger team, or even proceed to knockout stage.</p>
+										<p>After finished creating this Visualization, all my questions before has been answered. I came to conlusion that the 
+											Top 10 teams is the teams that are always be the favorite team that people choose/support to win the World cup.</br>
+										These teams definitely has higher chance getting to knockout stages or even become the champion because
+										because there are simple reason behind it:
+										Brazil won WC 5 times, England always goes through knockout stage and have really good players, Germany won WC 4 times, 
+										France just won it last WC in 2018, Argentina has 4, Portugal have Cristiano Ronaldo the GOAT, Spain
+										won it in 2010, Belgium is Rank 1 in FIFA ranking, Netherlands reach 3 WC final, Croatia lost final to
+										France in 2018 final.</br>
+										So it totally make sense that one of these teams going to win it, I am 80% sure.<br>
+										But in the end, the ball is round, you'll never know what will happen on the pitch, we might see some surprise like underdog team beating the favorite team, 
+										or even proceed to knockout stage and finals, and That's Football.</br>
+										Update 20 December 2022: See? Argentina won the World Cup, France is the finalist, Croatia is semi-finalist, and we have the underdog Morocco as semi-finalist.</p>
 									</section>
 								</div>
 							</article>
