@@ -76,15 +76,17 @@
 								</header>
 								<section>
 									<h4>Introduction</h4>
-									<p>After learning more about data, I wanted to test my SQL skill and my Data Visualization skill, and I think the best way to
-										improve is by doing a project, therefore I create this simple Sales Analysis Project.
+									<p>After learning more about data, I wanted to test my SQL skill and my Data Visualization 
+										skill, and I think one of the best way to test it by querying Data from Database and use it
+										to create a Dashboard because Dashboard usually have many Visualization, 
+										therefore I create this Sales Analysis Project.
 									</p> 
 									<p>Sales Analysis is a process of using data to understand how the business performs in terms of sales. With a dashboard as the end result of this project,
 										we will be able to gather valuable insights from it, and analyze AdventureWorks Sales Performance.
 									</p>
 									<h3>The Data</h3>
 									<p>AdventureWorks Database is a sample database that provided by Microsoft. AdventureWorks database supports standard 
-										online transaction processing scenarios for a fictitious bicycle manufacturer - Adventure Works Cycles. <a href="post1.html">More on AdventureWorks Database.</a>. 
+										online transaction processing scenarios for a fictitious bicycle manufacturer - Adventure Works Cycles. <a href="post1.html" target="_blank">More on AdventureWorks Database.</a>. 
 									</p>
 									<h3>Software Used</h3>
 									<table>
@@ -137,6 +139,8 @@
 								</section>
 								<section>
 									<h4>Chapter 1 - SQL</h4>
+									<p> SQL stands for Structured Query Language. It's a programming language used for managing and manipulating data in relational databases. 
+										Think of a database as a well-organized storage system for information, SQL is the tool that helps you find, sort, and organize those information.</p>
 									<h3>Query the data needed from the database.</h3>
 									<p>
 										Before we start loading the data to Power BI, the first thing we need to do is query 
@@ -173,17 +177,21 @@
 									<h4>Chapter 2 - Power BI</h4>
 									<p>
 										After we finished querying all data that we need, we're going to extract the result into .csv file. After that, 
-										load the extracted result + Sales Budget spreadsheet that given via E-mail into Microsoft Power BI to build the Dashboard.
+										load the extracted result + Sales Budget spreadsheet that has been given via E-mail into Microsoft Power BI to build the Dashboard.
 									</p>
 									<h3>Relationship Data Model</h3>
 									<p>
-										This is the Relationship Data Model after we import all the data, from here we are able to see the difference between
+										This is the Relationship Data Model after we import all the data and connect each table with key, from here we are able to see the difference between
 										dimension table and fact table easier, as the fact table connects to multiple dimension table.
 									</p>
 									<a class="image featured2"><img src="images/projects/project2/relationship_data_model.PNG" alt="" /></a>
 									<h3>Creating Key Measure for Calculating Sales and Budget Differences</h3>
 									<p>
-										We're going to create that can show the Sales - Budget number and Sales/Budget differences Percentage.<br>
+										In Power BI, a measure is a calculated value or metric that you can define and use to perform calculations or aggregations on your data,
+										 such as sums, averages, counts, percentages, or ratios. 
+									</p>
+									<p>
+										We're going to create measure that can show the Sales - Budget number and Sales/Budget differences Percentage.<br>
 										There are 4 measures that we're going to create to achieve that:
 									</p>
 									<ol>
@@ -223,10 +231,10 @@
 										<li>Copy paste the bar chart and replace the Full_Name in Y Axis to Product Name from DimProduct Table and also add Sub_Category to Tooltips so we can see the sub category. 
 											So we don't need to recreate the bar chart again for the products.</li>
 									</ol>
-									<h3>The Numbers</h3>
+									<h3>The Number Cards</h3>
 									<a class="image featured2"><img src="images/projects/project2/numbers.png" alt="" /></a>
 									<p>
-										Next is The numbers. These number will be the main thing that people see because the numbers will change based on the selected month, year and even products/customers when they click it.
+										Next is the number card. These card will be the main thing that people see because the numbers in the card will change based on the selected month, year and even products/customers when they click it.
 									</p>
 									<ol>
 										<li>For the first number we're going to need to import a new visual, the name is Dynamic KPI. After that we're going to click the icon
@@ -244,39 +252,49 @@
 								</section>
 								<section>
 									<h4>Chapter 3 - Result</h4>
+									<p>Power BI requires Pro/Premium License for me to be able to embed the Dashboard to public, therefore
+										I just share the GIF of the Dashboard. You can view the Dashboard in detail by Downloading Power BI
+										through Microsoft Store App and then download the Dashboard file (.pbix) under the GIF below or in github repo to view my Dashboard.</p>
 									<h3>The Dashboard</h3>
 									<a class="image featured2"><img src="images/projects/project2/dashboard.gif" alt="" /></a>
 									<center><a href="https://drive.google.com/file/d/1ZH5rCIq8zEDfgz8g7uscoiXZ6eZjUtd1/view?usp=sharing" target="_blank">Download dashboard file(.pbix) to try it yourself in Power BI</a></center>
 									<h3>Insight and Recommendation</h3>
 									<p>These are the insights that I obtained from the dashboard and also I provide some recommendation based on the insight.</p>
+									<h1>1. Line Chart & Number Card</h1>
+									<a class="image featured2"><img src="images/projects/project2/viz_1.png" alt="" /></a>
 									<table>
 										<colgroup>
-											<col span="1" style="width: 20%;">
-											<col span="1" style="width: 40%;">
-											<col span="1" style="width: 40%;">
+											<col span="1" style="width: 50%;">
+											<col span="1" style="width: 50%;">
 										 </colgroup>
 										<tr>
-											<th><center>Visualization</center></th>
 											<th><center>Insight</center></th>
 											<th><center>Recommendation</center></th>
 										</tr>
 										<tr>
-											<td>
-												<ol>
-													<li>Line Chart Sales vs Budget by Month</li>
-													<li>Number Cards</li>
-												</ol>
-											</td>
 											<td>Total Sales in 2021 is $5,842,485 and $16,351,550 in 2022, this means the Sales has increased 180% in 2022.</td>
 											<td>
 												<ol>
-													<li>Find the reason for this huge increase by doing deeper analysis to see the factors behind it.</li>
-													<li>Take advantage of this increase by improving production, expanding distribution, or increasing marketing efforts to reach more customers.</li>
+													<li>Take advantage of this increase by reinvesting back the revenue to the business such as: 
+														expand the type and quantity of the product, expand the store and open in new location, improve the distribution line, 
+														or run a marketing campaign to reach more customers.</li>
+													<li>Find the reason for this huge increase by doing deeper analysis to see the factors behind it, like correlation analysis.</li>
 												</ol>
 											</td>
 										</tr>
+									</table>
+									<h1>2. Line Chart</h1>
+									<a class="image featured2"><img src="images/projects/project2/viz_2.png" alt="" /></a>
+									<table>
+										<colgroup>
+											<col span="1" style="width: 50%;">
+											<col span="1" style="width: 50%;">
+										 </colgroup>
 										<tr>
-											<td>Line Chart Sales vs Budget by Month</td>
+											<th><center>Insight</center></th>
+											<th><center>Recommendation</center></th>
+										</tr>
+										<tr>
 											<td>
 												<ol>
 													<li>Sales reach it's highest in December for 2021 & 2022.</li>
@@ -291,36 +309,52 @@
 												</ol>
 											</td>
 										</tr>
+									</table>
+									<h1>3. Bar Chart</h1>
+									<a class="image featured2"><img src="images/projects/project2/viz_3.png" alt="" /></a>
+									<table>
+										<colgroup>
+											<col span="1" style="width: 50%;">
+											<col span="1" style="width: 50%;">
+										 </colgroup>
 										<tr>
-											<td>Bar Chart Top 10 Customers</td>
-											<td>Jordan Turner, Maurice Shan, and Janet Munoz is the Top 3 customers by their spending, they
-												are the customers that spend more than $10K.</td>
+											<th><center>Insight</center></th>
+											<th><center>Recommendation</center></th>
+										</tr>	
+										<tr>
 											<td>
 												<ol>
-													<li>Retain these high spending customer by growing the relationship between them and the company such as giving
-														special offers, discounts, or rewarding them.</li>
-													<li>Analyze the spending patterns and understand the behavior of these high spender.</li>
+													<li>Jordan Turner, Maurice Shan, and Janet Munoz is the Top 3 customers by their spending, and customer 1 - 9 spent over $10k</li>
+													<li>Touring Bikes and Mountain Bikes dominates the top 10 products, with 1 Road bikes in number 10 spot.</li>
+												</ol>
+											</td>
+											<td>
+												<ol>
+													<li>- Retain these high spending customer by growing the relationship between them and the company such as giving
+														special offers, discounts, or rewarding them.</br>
+													- Analyze the spending patterns and understand the behavior of these high spender.</li>
+													<li>
+														- Expand the Touring Bikes and Mountain Bikes product types</br>
+														- Optimize the price and make changes if necessary
+													</li>
 												</ol>
 											</td>
 										</tr>
+									</table>
+									<h1>4. Filled Map & Number Card</h1>
+									<a class="image featured2"><img src="images/projects/project2/viz_4.png" alt="" /></a>
+									<table>
+										<colgroup>
+											<col span="1" style="width: 50%;">
+											<col span="1" style="width: 50%;">
+										 </colgroup>
 										<tr>
-											<td>Bar Chart Top 10 Products</td>
-											<td>Touring Bikes and Mountain Bikes dominates the top 10 products, with 1 Road bikes in number 10 spot.</td>
-											<td>
-												<ol>
-													<li>Expand the Touring Bikes and Mountain Bikes Line</li>
-													<li>Optimize the price and make changes if necessary</li>
-												</ol>
-											</td>
+											<th><center>Insight</center></th>
+											<th><center>Recommendation</center></th>
 										</tr>
 										<tr>
-											<td>
-												<ol>
-													<li>Geography Map</li>
-													<li>Number Cards</li>
-												</ol>
-											</td>
-											<td>California is the highest contributor out of all states with 4,17 milion worth of Total Sales, 1.75 milion worth of profit, 4333 Customers, and 4981 of Orders.</td>
+											<td>California is the highest contributor out of all states with 4,17 milion worth of Total Sales, 
+												1.75 milion worth of profit, 4333 Customers, and 4981 of Orders.</td>
 											<td>
 												<ol>
 													<li>Invest in California and other high performing state. The investment could be something like improved marketing, opening more store and staff to support the growth</li>
@@ -331,8 +365,13 @@
 										</tr>
 									</table>
 									<h3>Conclusion</h3>
+									<p>
+										Looking data from dashboard can really made a difference from just a normal report/visualization. The flexibility in dashboard
+										and the amount of information you can fit into it is what makes dashboard amazing, it is dynamic not static.
+										Dashboard is a really good tools for monitoring data, people can use it for monitoring performance, product quantity, sales made, etc. etc.  
+									</p>
 									<p>AdventureWorks Cycle has gained a massive amount of Sales increase in the year of 2022, with this sales increase, that means the profit is getting bigger, brand awareness is growing, customer is increasing and they will spend more.</br>
-										These all are a really good positive, but there also room for improvement such as expanding the business, optimizing Inventory, retain the customers, and analyzing different aspects of the business.
+										These all are a really good positive, but there are always a room for improvement such as expanding the business, optimizing Inventory, retain the customers, and analyzing different aspects of the business.
 										A business should never be satisfied, always achieve to grow and expand.
 									</p>
 								</section>
