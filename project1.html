@@ -72,15 +72,15 @@
 								<header>
 									<h2>World Cup 2022 Players Overall Rating</h2>
 									<p>An analysis on World Cup 2022 Players Rating</p>
-									<a href="" target="_blank">Click here for Github Repository that contains all the files in this project</a>
+									<a href="https://github.com/achmadhafidz7/wc_2022_players_overall_rating" target="_blank">Click here for Github Repository that contains all the files in this project</a>
 								</header>
 								<div>
 									<section>
 										<h4>Introduction</h4>
-										<p>This is my first Data Analysis project. The story behind this is when the world cup 2022 is about to start I am curious about the national team
+										<p>This is my first Data Analysis project. The story behind this is when the world cup 2022 is about to start, and I am curious about the national team
 											that has the highest rating in FIFA 23 game, and also this is the first month of my journey in learning Data Analysis, so I think to myself
-											"Why not I make this into project?" because I also heard someone said it if you're confused on where to start your Data project, find project that you have passion in,
-											therefore I make this into data project.
+											"Why not I make this into project?" because I also heard someone said it if you're confused on where to start your Data project, 
+											find & work on project that related to your passion, and I love football, therefore I make this into data project.
 										</p>
 										<h3>The Data</h3>
 										<p>The data used in this project came from multiple sources, that includes : 
@@ -144,7 +144,7 @@
 									<section>
 										<h4>Chapter 1 - Preparing the Data</h4>
 										<h3>Cleaning FIFA 23 Dataset</h3>
-										<p>First thing to do we're going to clean the FIFA 23 Dataset from Kaggle with python in Jupyter Notebook. The purpose of this is to get the data that 
+										<p>First thing to do, we're going to clean the FIFA 23 Dataset from Kaggle with python in Jupyter Notebook. The purpose of this is to get the data that 
 											we wanted only, and adjust the formatting of some columns to the desired one.</p>
 										<h1>Import the Library</h1>
 										<pre>import pandas as pd
@@ -153,13 +153,13 @@ pd.options.mode.chained_assignment = None</pre>
 										<h1>Load the Data</h1>
 										<pre>fifa23players = pd.read_csv('Fifa 23 Players Data.csv', low_memory=False)
 fifa23players.head()</pre>
-										<p>This is how the raw dataset looks like, it has 89 columns, which is too much.</p>
+										<p>This is how the raw dataset looks like, it has 89 columns, which is quite a lot.</p>
 										<a class="image featured2"><img src="/images/projects/project1/fifa23dataset1.PNG"></a>
 										<h1>Shows all the columns</h1>
 										<p>View all the columns in this dataset.</p>
 										<pre>fifa23players.columns</pre>
 										<h1>Choose the columns needed</h1>
-										<p>We need to drop/remove all unused columns, for it to be easier to work with and also to make the software faster.</p>
+										<p>We need to drop/remove all unused columns, for it to be easier to work with and also to make it run faster.</p>
 										<pre>columns_needed = [
 	'Known As', 
 	'Full Name', 
@@ -222,16 +222,16 @@ wikiurl = "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_squads"</pre>
 										<pre>response = requests.get(wikiurl)
 print(response.status_code)</pre>
 										<a class="image featured2"><img src="/images/projects/project1/wikiscrape1.PNG"></a>
-										<h1>Create a variable that contains all the table from the website</h1>
-										<p>This is basically the scraping process. We need to store all the scraped data into variables, it's called 
-											tables. </br>
+										<h1>Create a variable that has all the tables from the website</h1>
+										<p>This is basically the scraping process. We need to store all the scraped data into variables, the variable called 
+											tables.</br>
 											If we do "print(tables)" the output will show all the tables available in that page including the ones that we don't need. 
 											As we can see, the tables we need is the first 32 tables.</p>
 										<pre>tables = pd.read_html(wikiurl)</pre>
 										<p>If we do "print(tables)" the output will show all the tables available in that page including the ones
 										that we don't need.</p>
 										<h1>Concate all the tables</h1>
-										<p>we're going to concate/merge the tables we need. Concate the first 32 tables we need.
+										<p>We're going to concate/merge the tables we need. Concate the first 32 tables we need.
 										</p>
 										<pre>tables_concat = pd.concat(tables[:32])
 df = tables_concat[['No.', 'Pos.', 'Player','Club']]
@@ -314,10 +314,12 @@ nat(805,830,'Uruguay')</pre>
 										<p>
 											After this there will be some rows that are not filled or shown "N.A" value, that is because:
 											<ol>
-												<li>The lookup value not match, the solution is to use known_as tab instead of full name bcs that's what happened in some countries like spain, portugal, or brazil</li>
-												<li>The name could be different, but they are the same person/player, the solution is to search the name manually and copy the name so it can use the index and match</li>
-												<li>The player just not exist in FIFA 23 game because not every player will be included in the game, the solution is to go to fifaratings.com and search for the players, for the age
-													just search the player in Google. </li>
+												<li>The lookup value doesn't match. The solution is to use known_as column instead of full_name, because that's what 
+													happened in some countries like spain, portugal, or brazil the FIFA Data tend to use shorter name in known_as column.</li>
+												<li>The name could be different, but they are the same person/player. The solution is to search the name in the FIFA Data manually with Find, and 
+													copy the name so it can use the index and match.</li>
+												<li>The player just not exist in FIFA 23 game because not every player will be included in the game, especially for less popular country/club. The solution
+													to go to fifaratings.com and search for the players, for the age just search the player in Google.</li>
 											</ol>
 										</p>
 										<h3>Create a master sheet</h3>
@@ -372,6 +374,7 @@ nat(805,830,'Uruguay')</pre>
 										</ol>
 										<h3>Creating the Dashboard</h3>
 										<a class="image featured2"><img src="/images/projects/project1/tableau5.png"></a>
+										<p>The dashboard will be the main display that will contains all of the visualization before.</p>
 										<ol>
 											<li>Set the size of the Dashboard to Fixed Size Custom 1000 x 2000 pixels</li>
 											<li>To add a filter, first add the first sheet which is overall rating bar chart to the dashboard and then click the sheet, 
@@ -398,18 +401,19 @@ nat(805,830,'Uruguay')</pre>
 											<li>Iran has the oldest set of players(28.8 Average), while Ghana has the youngest set of players(24.4 Average).</li>
 										</ol>
 										<h3>Conclusion</h3>
-										<p>After finished creating this Visualization, all my questions before has been answered. I came to conlusion that the 
-											Top 10 teams is the teams that are always be the favorite team that people choose/support to win the World cup.</br>
-										These teams definitely has higher chance getting to knockout stages or even become the champion because
-										because there are simple reason behind it:
-										Brazil won WC 5 times, England always goes through knockout stage and have really good players, Germany won WC 4 times, 
+										<p>After finishing this Project, all my questions before has been answered. I came to conlusion that the 
+											Top 10 teams is the teams that are always be the favorite team that people choose/support to win the World cup.</p>
+										<p>These teams definitely has higher chance getting to knockout stages or even become the champion because
+										because there are simple reason behind it:</p>
+										<p>Brazil won WC 5 times, England always goes through knockout stage and have really good players, Germany won WC 4 times, 
 										France just won it last WC in 2018, Argentina has 4, Portugal have Cristiano Ronaldo the GOAT, Spain
 										won it in 2010, Belgium is Rank 1 in FIFA ranking, Netherlands reach 3 WC final, Croatia lost final to
-										France in 2018 final.</br>
-										So it totally make sense that one of these teams going to win it, I am 80% sure.<br>
-										But in the end, the ball is round, you'll never know what will happen on the pitch, we might see some surprise like underdog team beating the favorite team, 
-										or even proceed to knockout stage and finals, and That's Football.</br>
-										Update 20 December 2022: See? Argentina won the World Cup, France is the finalist, Croatia is semi-finalist, and we have the underdog Morocco as semi-finalist.</p>
+										France in 2018 final.</p>
+										<p>The exposure they had to top level football, the top players they had, and the popularity is what makes them different. 
+											So it totally make sense that one of these teams going to win it, I am 80% sure.</p>
+										<p>But in the end, the ball is round, you'll never know what will happen on the pitch, we might see some surprise like underdog team beating the favorite team, 
+										or even proceed to knockout stage and finals, and That's Football.</p>
+										<p><strong>Update 20 December 2022:</strong> See? Argentina won the World Cup, France is the finalist, Croatia is semi-finalist, and we have the underdog Morocco as semi-finalist.</p>
 									</section>
 								</div>
 							</article>
